@@ -67,9 +67,13 @@ def greedy_cow_transport(cows, limit=10):
             if sofarWeghit+weight <= limit:  # good , take the cow
                 takenCow.append(cow)
                 sofarWeghit += weight
+        if not takenCow:
+            if not trip:
+                return []
+            # limit is too small or remaining cows are too heavy
+            raise ValueError(
+                "limit is too small or remaining cows are too heavy")
         # update the dictionary with removing taken cows
-        if not takenCow:  # limit is too small or remaining cows are too heavy
-            raise ValueError("limit is too small")
         for cow in takenCow:
             sortedCow.pop(cow)
         # this trip is done , add takenCow list to trip
@@ -78,7 +82,7 @@ def greedy_cow_transport(cows, limit=10):
         sofarWeghit = 0
     return trip
 
-  # Problem 2
+# Problem 2
 
 
 def brute_force_cow_transport(cows, limit=10):
@@ -101,8 +105,21 @@ def brute_force_cow_transport(cows, limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    cowNames = list(cows.keys())
+    totallWeight = 0
+    # iterate until an optimal partition is found
+    for partition in get_partitions(cowNames):
+        for trip in partition:
+            totallWeight = 0
+            optimalPartition = False
+            totallWeight += sum(cows[cow] for cow in trip)
+            if totallWeight <= limit:  # good ,check next trip
+                optimalPartition = True
+            if not optimalPartition:  # not a good partition,check next
+                break
+        if optimalPartition: 
+            return partition
+    return []
 
 
 # Problem 3
@@ -131,6 +148,9 @@ lines to print the result of your problem.
 
 cows = load_cows("ps1_cow_data.txt")
 limit = 100
-print(cows)
-print(greedy_cow_transport(cows, limit))
-# print(brute_force_cow_transport(cows, limit))
+print(cows, end='\n\n')
+greedy = greedy_cow_transport(cows, limit)
+print(f"{greedy}\n\nlen:{len(greedy)}")
+print('\n')
+brute = brute_force_cow_transport(cows, limit)
+print(f"{brute}\n\nlen:{len(brute)}")
