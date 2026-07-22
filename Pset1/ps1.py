@@ -117,7 +117,7 @@ def brute_force_cow_transport(cows, limit=10):
                 optimalPartition = True
             if not optimalPartition:  # not a good partition,check next
                 break
-        if optimalPartition: 
+        if optimalPartition:
             return partition
     return []
 
@@ -136,8 +136,15 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+    cows = load_cows("ps1_cow_data.txt")
+    start = time.time()
+    greedy = greedy_cow_transport(cows)
+    end = time.time()
+    print(f"greedy: number of trips: {len(greedy)}\n run in:{end-start}\n")
+    start = time.time()
+    brute = brute_force_cow_transport(cows)
+    end = time.time()
+    print(f"btute-force: number of trips: {len(brute)}\n run in:{end-start}")
 
 
 """
@@ -146,11 +153,11 @@ Do not submit this along with any of your answers. Uncomment the last two
 lines to print the result of your problem.
 """
 
+limit = 10
 cows = load_cows("ps1_cow_data.txt")
-limit = 100
 print(cows, end='\n\n')
 greedy = greedy_cow_transport(cows, limit)
-print(f"{greedy}\n\nlen:{len(greedy)}")
-print('\n')
 brute = brute_force_cow_transport(cows, limit)
-print(f"{brute}\n\nlen:{len(brute)}")
+print(f"greedy:{greedy}\n\nlen:{len(greedy)}\n\n\
+brute-force:{brute}\n\nlen:{len(brute)}\n\n")
+compare_cow_transport_algorithms()
