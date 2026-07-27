@@ -60,7 +60,7 @@ The problem is a variant of the **Bin Packing Problem** (an NP-hard problem). Th
    git clone [https://github.com/mamadlari/MIT-6.00.2x.git](https://github.com/mamadlari/MIT-6.00.2x.git)
    cd MIT-6.00.2x/Pset1
 
-```
+
 
 2. **Ensure File Alignment:**
 Verify that `ps1.py`, `ps1_partition.py`, and `ps1_cow_data.txt` are all located in the same directory.
