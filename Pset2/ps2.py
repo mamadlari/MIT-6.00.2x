@@ -134,8 +134,8 @@ class RectangularRoom(object):
 
         returns: a Position object.
         """
-        x = random.randint(0, self.width-1)
-        y = random.randint(0, self.height-1)
+        x = random.uniform(0, self.width-1)
+        y = random.uniform(0, self.height-1)
         return Position(x, y)
 
     def isPositionInRoom(self, pos):
