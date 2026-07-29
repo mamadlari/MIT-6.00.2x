@@ -84,7 +84,9 @@ class RectangularRoom(object):
         width: an integer > 0
         height: an integer > 0
         """
-        raise NotImplementedError
+        self.width = width
+        self.height = height
+        self.cleanPositions = []
 
     def cleanTileAtPosition(self, pos):
         """
@@ -94,7 +96,9 @@ class RectangularRoom(object):
 
         pos: a Position
         """
-        raise NotImplementedError
+        position = (pos.getX(), pos.getY())
+        if position not in self.cleanPositions:
+            self.cleanPositions.append(position)
 
     def isTileCleaned(self, m, n):
         """
@@ -106,7 +110,7 @@ class RectangularRoom(object):
         n: an integer
         returns: True if (m, n) is cleaned, False otherwise
         """
-        raise NotImplementedError
+        return (m, n) in self.cleanPositions
 
     def getNumTiles(self):
         """
@@ -114,7 +118,7 @@ class RectangularRoom(object):
 
         returns: an integer
         """
-        raise NotImplementedError
+        return self.width*self.height
 
     def getNumCleanedTiles(self):
         """
@@ -122,7 +126,7 @@ class RectangularRoom(object):
 
         returns: an integer
         """
-        raise NotImplementedError
+        return len(self.cleanPositions)
 
     def getRandomPosition(self):
         """
@@ -130,7 +134,9 @@ class RectangularRoom(object):
 
         returns: a Position object.
         """
-        raise NotImplementedError
+        x = random.randint(0, self.width-1)
+        y = random.randint(0, self.height-1)
+        return Position(x, y)
 
     def isPositionInRoom(self, pos):
         """
@@ -139,7 +145,13 @@ class RectangularRoom(object):
         pos: a Position object.
         returns: True if pos is in the room, False otherwise.
         """
-        raise NotImplementedError
+        # check x in range(0,with) and y in range(0,height)
+        flag = True
+        if not (pos.getX() >= 0 and pos.getX() < self.width):
+            flag = False
+        if not (pos.getY() >= 0 and pos.getY() < self.height):
+            flag = False
+        return flag
 
 
 # === Problem 2
