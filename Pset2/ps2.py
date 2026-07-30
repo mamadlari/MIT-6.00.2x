@@ -96,8 +96,8 @@ class RectangularRoom(object):
 
         pos: a Position
         """
-        position = (pos.getX(), pos.getY())
-        if position not in self.cleanPositions:
+        position = (int(pos.getX()), int(pos.getY()))
+        if not self.isTileCleaned(position[0], position[1]):
             self.cleanPositions.append(position)
 
     def isTileCleaned(self, m, n):
@@ -110,6 +110,7 @@ class RectangularRoom(object):
         n: an integer
         returns: True if (m, n) is cleaned, False otherwise
         """
+        m, n = int(m), int(n)
         return (m, n) in self.cleanPositions
 
     def getNumTiles(self):
