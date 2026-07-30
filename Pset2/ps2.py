@@ -212,8 +212,8 @@ class Robot(object):
 
         direction: integer representing an angle in degrees
         """
-        self.direction=direction
-        
+        self.direction = direction
+
     def updatePositionAndClean(self):
         """
         Simulate the passage of a single time-step.
@@ -241,15 +241,14 @@ class StandardRobot(Robot):
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
         """
-        old_position=self.getRobotPosition()
-        new_position=old_position.getNewPosition(self.getRobotDirection(),self.speed)
-        self.room.cleanTileAtPosition(old_position)
+        old_position = self.getRobotPosition()
+        new_position = old_position.getNewPosition(
+            self.getRobotDirection(), self.speed)
         if self.room.isPositionInRoom(new_position):
             self.setRobotPosition(new_position)
             self.room.cleanTileAtPosition(new_position)
         else:
             self.setRobotDirection(random.randint(0, 360-1))
-            
 
 
 # Uncomment this line to see your implementation of StandardRobot in action!
@@ -257,6 +256,33 @@ class StandardRobot(Robot):
 
 
 # === Problem 4
+
+## Helper functions for run simulation ##
+## ----------------------------------------- 
+def generateRobot(num_robots, speed, width, height, robot_type):
+    """
+    generate NUM_ROBOTS robots and return list of robots and room
+    num_robots: an int (num_robots > 0)
+    speed: a float (speed > 0)
+    width: an int (width > 0)
+    height: an int (height > 0)
+    robot_type: class of robot to be instantiated
+
+    """
+    robots = []
+    room = RectangularRoom(width, height)
+    for n in range(num_robots):
+        R = robot_type(room, speed)
+        robots.append(R)
+    return robots, room
+
+
+def cleanTilefraction(room):
+    """return the fraction of cleaned tiles"""
+    return room.getNumCleanedTiles()/room.getNumTiles()
+## ---------------------------------------- 
+
+
 def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
                   robot_type):
     """
