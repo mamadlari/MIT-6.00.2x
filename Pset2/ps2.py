@@ -300,14 +300,40 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
     num_trials: an int (num_trials > 0)
     robot_type: class of robot to be instantiated (e.g. StandardRobot or
                 RandomWalkRobot)
+
+    if you want to see  visualisation once , uncomment the comments below:
+        # anim = ps2_visualize.RobotVisualization(num_robots, width, height,0.02)
+        # anim.update(room, robots)
+        # anim.done()
     """
-    raise NotImplementedError
+    time_steps = []
+    for t in range(num_trials):
+        done = False  # True -> all tiles in the room are clean
+        # anim = ps2_visualize.RobotVisualization(num_robots, width, height,0.02)
+        num_timeStep = 0
+        robots, room = generateRobot(
+            num_robots, speed, width, height, robot_type)
+        while cleanTilefraction(room) <= min_coverage:
+            # the robots move and clean one tile at a time step
+            for i in range(len(robots)):
+                # anim.update(room, robots)
+                robots[i].updatePositionAndClean()
+            num_timeStep += 1
+            if done:
+                break
+            if cleanTilefraction(room) == 1:
+                done = True
+        time_steps.append(num_timeStep)
+        # anim.done()
+    return (sum(time_steps)/len(time_steps))
+
 
 # Uncomment this line to see how much your simulation takes on average
-# print(runSimulation(1, 1.0, 10, 10, 0.75, 30, StandardRobot))
-
+# print(runSimulation(3, 1.0, 5, 5, 1, 30, StandardRobot))
 
 # === Problem 5
+
+
 class RandomWalkRobot(Robot):
     """
     A RandomWalkRobot is a robot with the "random walk" movement strategy: it
