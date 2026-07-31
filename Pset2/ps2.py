@@ -258,7 +258,7 @@ class StandardRobot(Robot):
 # === Problem 4
 
 ## Helper functions for run simulation ##
-## ----------------------------------------- 
+# -----------------------------------------
 def generateRobot(num_robots, speed, width, height, robot_type):
     """
     generate NUM_ROBOTS robots and return list of robots and room
@@ -280,7 +280,7 @@ def generateRobot(num_robots, speed, width, height, robot_type):
 def cleanTilefraction(room):
     """return the fraction of cleaned tiles"""
     return room.getNumCleanedTiles()/room.getNumTiles()
-## ---------------------------------------- 
+# ----------------------------------------
 
 
 def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
@@ -328,8 +328,9 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
     return (sum(time_steps)/len(time_steps))
 
 
-# Uncomment this line to see how much your simulation takes on average
-# print(runSimulation(3, 1.0, 5, 5, 1, 30, StandardRobot))
+# Uncomment these lines to see how much your simulation takes on average
+# print("Average number of time steps for StandardRobot:",\
+#       runSimulation(3, 1.0, 5, 5, 1, 30, StandardRobot))
 
 # === Problem 5
 
@@ -347,7 +348,19 @@ class RandomWalkRobot(Robot):
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
         """
-        raise NotImplementedError
+        old_position = self.getRobotPosition()
+        new_position = old_position.getNewPosition(
+            self.getRobotDirection(), self.speed)
+        if self.room.isPositionInRoom(new_position):
+            self.setRobotPosition(new_position)
+            self.room.cleanTileAtPosition(new_position)
+            self.setRobotDirection(random.randint(0, 360-1))
+        else:
+            self.setRobotDirection(random.randint(0, 360-1))
+
+# Uncomment these lines to see how much your simulation takes on average
+# print("Average number of time steps for RandomWalkRobot:",\
+#       runSimulation(1, 1.0, 20, 20, 1, 30, RandomWalkRobot))
 
 
 def showPlot1(title, x_label, y_label):
