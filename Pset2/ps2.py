@@ -6,18 +6,6 @@ import random
 import ps2_visualize
 import pylab
 
-##################
-# Comment/uncomment the relevant lines, depending on which version of Python you have
-##################
-
-# For Python 3.5:
-# from ps2_verify_movement35 import testRobotMovement
-# If you get a "Bad magic number" ImportError, you are not using Python 3.5
-
-# For Python 3.12:
-from ps2_verify_movement312 import testRobotMovement
-# If you get a "Bad magic number" ImportError, you are not using Python 3.6
-
 
 # === Provided class Position
 class Position(object):
@@ -330,7 +318,7 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
 
 # Uncomment these lines to see how much your simulation takes on average
 # print("Average number of time steps for StandardRobot:",\
-#       runSimulation(3, 1.0, 5, 5, 1, 30, StandardRobot))
+#       runSimulation(3, 1.0, 20, 20, 1, 30, StandardRobot))
 
 # === Problem 5
 
@@ -426,5 +414,5 @@ def showPlot2(title, x_label, y_label):
 
 # showPlot1("Time It Takes 1 - 10 Robots To Clean 80% Of A Room", "Number of Robots", "Time-steps")
 
-showPlot2("Time It Takes Two Robots To Clean 80% Of Variously Shaped Rooms","Aspect Ratio","Time-steps")
+# showPlot2("Time It Takes Two Robots To Clean 80% Of Variously Shaped Rooms","Aspect Ratio","Time-steps")
 
