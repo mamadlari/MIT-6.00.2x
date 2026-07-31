@@ -11,15 +11,15 @@ A discrete-time simulation engine in Python that models autonomous vacuum cleane
 
 ## Table of Contents
 
-* [Description](https://www.google.com/search?q=%23description)
-* [Features](https://www.google.com/search?q=%23features)
-* [Technologies Used](https://www.google.com/search?q=%23technologies-used)
-* [Project Structure](https://www.google.com/search?q=%23project-structure)
-* [Installation & Usage](https://www.google.com/search?q=%23installation--usage)
-* [Design Choices & Technical Challenges](https://www.google.com/search?q=%23design-choices--technical-challenges)
-* [Screenshots](https://www.google.com/search?q=%23screenshots)
-* [Acknowledgements](https://www.google.com/search?q=%23acknowledgements)
-* [License](https://www.google.com/search?q=%23license)
+* [Description](#description)
+* [Features](#features)
+* [Technologies Used](#technologies-used)
+* [Project Structure](#project-structure)
+* [Installation & Usage](#installation--usage)
+* [Design Choices & Technical Challenges](#design-choices--technical-challenges)
+* [Screenshots](#screenshots)
+* [Acknowledgements](#acknowledgements)
+* [License](#license)
 
 ---
 
