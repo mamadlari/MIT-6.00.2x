@@ -365,7 +365,11 @@ class RandomWalkRobot(Robot):
 
 def showPlot1(title, x_label, y_label):
     """
-    What information does the plot produced by this function tell you?
+    Show plot of average time steps vs. number of robots for
+    different movement staregies (default : 80% room coverage)
+    
+    title,x_label and y_label : a string
+    
     """
     num_robot_range = range(1, 11)
     times1 = []
@@ -387,7 +391,11 @@ def showPlot1(title, x_label, y_label):
 
 def showPlot2(title, x_label, y_label):
     """
-    What information does the plot produced by this function tell you?
+    Show plot of average time steps vs. aspect ratios for
+    different movement staregies (default : 80% room coverage)
+    
+    title,x_label and y_label : a string
+    
     """
     aspect_ratios = []
     times1 = []
@@ -414,16 +422,9 @@ def showPlot2(title, x_label, y_label):
 # NOTE: If you are running the simulation, you will have to close it
 # before the plot will show up.
 
-#
-# 1) Write a function call to showPlot1 that generates an appropriately-labeled
-#     plot.
-#
-#       (... your call here ...)
-#
+#Uncomment lines to see plots but not all at once
 
-#
-# 2) Write a function call to showPlot2 that generates an appropriately-labeled
-#     plot.
-#
-#       (... your call here ...)
-#
+# showPlot1("Time It Takes 1 - 10 Robots To Clean 80% Of A Room", "Number of Robots", "Time-steps")
+
+showPlot2("Time It Takes Two Robots To Clean 80% Of Variously Shaped Rooms","Aspect Ratio","Time-steps")
+
