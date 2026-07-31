@@ -1,3 +1,8 @@
+<p align="right">
+  <b>English</b> | <a href="README.fa.md">فارسی</a>
+</p>
+
+---
 # iRobot Roomba Vacuum Simulation (MIT 6.00.2x)
 
 A discrete-time simulation engine in Python that models autonomous vacuum cleaner robots operating inside rectangular rooms to evaluate and compare movement strategies and cleaning efficiency.
